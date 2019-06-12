@@ -1,0 +1,20 @@
+﻿@model  NotifikacijaVM
+@{
+    ViewData["Title"] = "PrikazNotifikacija";
+}
+
+<h2>PrikazNotifikacija</h2>
+
+<table>
+    @foreach (var x in Model.listaNotifikacija)
+    {
+        <tr>
+            <th>
+                <div class="alert alert-warning" role="alert">
+                    <strong>Događaj "@x.Naziv" - @x.Datum</strong> <br />
+                    Ovo je podsjetnik za obavezu "@x.Opis". Označi kao <a href="/DetaljiDogadjaja/OznaciKaoProcitanu?id=@x.PoslataNotifikacijaId" class="">pročitanu.</a>
+                </div>
+            </th>
+        </tr>
+    }
+</table>

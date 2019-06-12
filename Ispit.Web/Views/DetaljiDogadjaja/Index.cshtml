@@ -1,0 +1,41 @@
+﻿@model DetaljiDogadjajaIndexVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<table style="border:1px solid">
+    <tr>
+        <td>Datum dogadjaja </td>
+        <td>@Model.DatumDogadjaja</td>
+    </tr>
+    <tr>
+        <td>Datum dodavanja </td>
+        <td>@Model.DatumDodavanja</td>
+    </tr>
+    <tr>
+        <td>Opis dogadjaja </td>
+        <td>@Model.Opis</td>
+    </tr>
+    <tr>
+        <td>Nastavnik </td>
+        <td>@Model.Nastavnik</td>
+    </tr>
+</table>
+
+<a href="/DetaljiDogadjaja/PrikazNotifikacija" class="btn btn-info">Prikazi notifikacije</a>
+
+<div id="ajaxDiv" style="border:1px solid"></div>
+
+<script>
+    $(document).ready(function () {
+        $.get({
+            url: "/DetaljiDogadjaja/PrikazObaveza?id=@Model.DogadjajId",
+            success: function (rez) {
+                $("#ajaxDiv").html(rez);
+            }
+        });
+    });
+</script>
+

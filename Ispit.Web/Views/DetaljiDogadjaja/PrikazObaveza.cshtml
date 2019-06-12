@@ -1,0 +1,40 @@
+﻿@model DetaljiDogadjajaPrikazObavezaVM
+@{
+    ViewData["Title"] = "PrikazObaveza";
+}
+
+<h2>PrikazObaveza</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv</th>
+            <th>Procenat realizacije obaveze</th>
+            <th>Salji not x dana unaprijed</th>
+            <th>Ponavljaj notifikaciju</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.listaObaveza)
+        {
+            <tr>
+                <td>@x.Naziv</td>
+                <td>@x.ProcenatRealizacije</td>
+                <td>@x.DanaUnaprijed</td>
+                <td>
+                    @if (x.PonavljajNotifikaciju)
+                    {
+                        <span>DA</span>
+                    }
+                    else
+                    {
+                        <span>NE</span>
+                    }
+                </td>
+                <td><button ajax-poziv='da' ajax-url="/DetaljiDogadjaja/PromijeniProcenat?id=@x.StanjeObavezaId" ajax-rezultat="ajaxDiv" class="btn btn-info">Uredi</button></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
